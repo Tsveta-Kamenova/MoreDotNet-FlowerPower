@@ -3,7 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Reflection;
-
+    using System.Runtime.CompilerServices;
     using MoreDotNet.Extensions.Common;
 
     /// <summary>
@@ -109,7 +109,36 @@
         /// <typeparam name="T">The item type of the <see cref="IList{T}"/></typeparam>
         /// <param name="list">The <see cref="IList{T}"/> instance on which the extension method is called.</param>
         /// <param name="comparison">the method for comparison of two elements.</param>
-        /// 
+
+
+        /// Fixed version of the method
+        //public static void InsertionSort<T>(this IList<T> list, Comparison<T> comparison)
+        //{
+        //    if (list == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(list));
+        //    }
+
+        //    if (comparison == null)
+        //    {
+        //        throw new ArgumentNullException(nameof(comparison));
+        //    }
+
+        //    for (int i = 1; i < list.Count; i++)
+        //    {
+        //        T current = list[i];
+        //        int j = i - 1;
+
+        //        while (j >= 0 && comparison(list[j], current) > 0)
+        //        {
+        //            list[j + 1] = list[j];
+        //            j--;
+        //        }
+
+        //        list[j + 1] = current;
+        //    }
+        //}
+
 
         public static void InsertionSort<T>(this IList<T> list, Comparison<T> comparison)
         {
@@ -123,44 +152,16 @@
                 throw new ArgumentNullException(nameof(comparison));
             }
 
-            for (int i = 1; i < list.Count; i++)
+            for (int i = 2; i < list.Count; i++)
             {
-                T current = list[i];
-                int j = i - 1;
-
-                while (j >= 0 && comparison(list[j], current) > 0)
+                for (int j = i; j > 1 && comparison(list[j], list[j - 1]) < 0; j--)
                 {
-                    list[j + 1] = list[j];
-                    j--;
+                    T tempItem = list[j];
+                    list.RemoveAt(j);
+                    list.Insert(j - 1, tempItem);
                 }
-
-                list[j + 1] = current;
             }
         }
-
-
-        //public static void InsertionSort<T>(this IList<T> list, Comparison<T> comparison)
-        //{
-        //    if (list == null)
-        //    {
-        //        throw new ArgumentNullException(nameof(list));
-        //    }
-
-        //    if (comparison == null)
-        //    {
-        //        throw new ArgumentNullException(nameof(comparison));
-        //    }
-
-        //    for (int i = 2; i < list.Count; i++)
-        //    {
-        //        for (int j = i; j > 1 && comparison(list[j], list[j - 1]) < 0; j--)
-        //        {
-        //            T tempItem = list[j];
-        //            list.RemoveAt(j);
-        //            list.Insert(j - 1, tempItem);
-        //        }
-        //    }
-        //}
 
         /// <summary>
         /// Inserts an Item into a list at the first place that the <paramref name="predicate"/> expression fails. If it is true in all cases, then the item is appended to the end of the list.
