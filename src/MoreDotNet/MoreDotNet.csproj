@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <Version>2.1.0</Version>
+    <TargetFramework>net8.0</TargetFramework>
+    <CodeAnalysisRuleSet>..\..\visual-studio-analyzers.ruleset</CodeAnalysisRuleSet>
+    <PackageId>MoreDotNet</PackageId>
+    <Authors>Teodor Kurtev</Authors>
+    <Description>A combination of helpful extension methods.</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <Copyright>Copyright 2023 Teodor Kurtev.</Copyright>
+    <PackageTags>extensions helpers</PackageTags>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\README.md">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,31 @@
+{
+  "name": "moredotnet",
+  "version": "1.0.0",
+  "description": "A combination of helpful extension methods.",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "prepare": "husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Teodor92/MoreDotNet.git"
+  },
+  "keywords": [
+    "extensions",
+    "helpers"
+  ],
+  "author": "Teodor Kurtev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Teodor92/MoreDotNet/issues"
+  },
+  "homepage": "https://github.com/Teodor92/MoreDotNet#readme",
+  "devDependencies": {
+    "@commitlint/cli": "^18.4.3",
+    "@commitlint/config-conventional": "^18.4.3",
+    "husky": "^8.0.0"
+  }
+}
