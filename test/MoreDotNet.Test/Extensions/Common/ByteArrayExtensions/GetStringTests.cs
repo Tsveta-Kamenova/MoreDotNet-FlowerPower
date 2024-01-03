@@ -118,5 +118,61 @@
         }
 
         private static byte[] GetBytesWithPreamble(Encoding encoding, string data) => encoding.GetPreamble().Concat(encoding.GetBytes(data)).ToArray();
+
+        //NEW TESTS
+        [Fact]
+        public void GetString_UTF8WithBOM_ShouldReturnProperString()
+        {
+            var buffer = GetBytesWithPreamble(Encoding.UTF8, "More Dot Net");
+            var result = buffer.GetString();
+
+            Assert.Equal("More Dot Net", result);
+        }
+
+        [Fact]
+        public void GetString_UTF16WithBOM_ShouldReturnProperString()
+        {
+            var buffer = GetBytesWithPreamble(Encoding.Unicode, "More Dot Net");
+            var result = buffer.GetString();
+
+            Assert.Equal("More Dot Net", result);
+        }
+
+        [Fact]
+        public void GetString_UTF32WithBOM_ShouldReturnProperString()
+        {
+            var buffer = GetBytesWithPreamble(Encoding.UTF32, "More Dot Net");
+            var result = buffer.GetString();
+
+            Assert.Equal("More Dot Net", result);
+        }
+
+        [Fact]
+        public void GetString_UTF7WithBOM_ShouldReturnProperString()
+        {
+            var buffer = GetBytesWithPreamble(Encoding.UTF7, "More Dot Net");
+            var result = buffer.GetString();
+
+            Assert.Equal("More Dot Net", result);
+        }
+
+        [Fact]
+        public void GetString_BigEndianUnicodeWithBOM_ShouldReturnProperString()
+        {
+            var buffer = GetBytesWithPreamble(Encoding.BigEndianUnicode, "More Dot Net");
+            var result = buffer.GetString();
+
+            Assert.Equal("More Dot Net", result);
+        }
+
+        [Fact]
+        public void GetString_UTF32BigEndianWithBOM_ShouldReturnProperString()
+        {
+            var buffer = GetBytesWithPreamble(new UTF32Encoding(true, true), "More Dot Net");
+            var result = buffer.GetString();
+
+            Assert.Equal("More Dot Net", result);
+        }
+
     }
 }
