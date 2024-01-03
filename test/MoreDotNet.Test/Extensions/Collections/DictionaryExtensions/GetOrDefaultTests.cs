@@ -28,6 +28,7 @@
             Assert.Equal(expected, actual);
         }
 
+        //NEW TESTS
         [Fact]
         public void GetOrDefault_NonExistingKeyGiven_ShouldReturnDefaultValueIfNothingElseIsSpecified()
         {

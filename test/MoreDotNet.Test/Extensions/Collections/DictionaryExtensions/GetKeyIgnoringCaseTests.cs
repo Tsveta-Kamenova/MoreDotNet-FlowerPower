@@ -48,6 +48,7 @@
             Assert.Equal(expected, actual);
         }
 
+        //NEW TESTS
         [Theory]
         [InlineData("TestKey", "testkey")]
         [InlineData("anotherKey", "ANOTHERKEY")]

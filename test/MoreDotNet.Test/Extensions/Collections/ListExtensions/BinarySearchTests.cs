@@ -94,6 +94,7 @@
 
             Assert.Equal("ZItem", item);
         }
+
         [Fact]
         public void InsertionSort_NullList_ShouldThrowArgumentNullException()
         {

@@ -24,6 +24,17 @@
             return value ? expression() : default(TResult);
         }
 
+        public static TResult WhenTrue<TResult>(this bool value, Func<TResult> expression, TResult defaultValue)
+        {
+            if (expression == null)
+            {
+                throw new ArgumentNullException(nameof(expression));
+            }
+
+            return value ? expression() : defaultValue;
+        }
+
+
         /// <summary>
         /// Returns a <see cref="TResult"/> if the input value is true.
         /// </summary>
