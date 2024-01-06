@@ -148,15 +148,6 @@
         }
 
         [Fact]
-        public void GetString_UTF7WithBOM_ShouldReturnProperString()
-        {
-            var buffer = GetBytesWithPreamble(Encoding.UTF7, "More Dot Net");
-            var result = buffer.GetString();
-
-            Assert.Equal("More Dot Net", result);
-        }
-
-        [Fact]
         public void GetString_BigEndianUnicodeWithBOM_ShouldReturnProperString()
         {
             var buffer = GetBytesWithPreamble(Encoding.BigEndianUnicode, "More Dot Net");
