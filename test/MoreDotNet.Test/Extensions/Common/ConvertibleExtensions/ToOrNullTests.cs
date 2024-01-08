@@ -1,7 +1,6 @@
 ﻿namespace MoreDotNet.Test.Extensions.Common.ConvertibleExtensions
 {
     using MoreDotNet.Extensions.Common;
-
     using Xunit;
 
     public class ToOrNullTests
@@ -47,5 +46,19 @@
             Assert.False(result);
             Assert.Null(newValue);
         }
+
+        //New tests
+
+        [Fact]
+        public void ToOrNull_NullableDoubleWithOutParamToNullString_ShouldReturnNull()
+        {
+            double? nullableDoubleValue = null;
+            string result;
+            var conversionResult = nullableDoubleValue.ToOrNull(out result);
+
+            Assert.False(conversionResult);
+            Assert.Null(result);
+        }
+
     }
 }
