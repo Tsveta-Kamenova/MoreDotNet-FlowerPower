@@ -51,5 +51,59 @@
             Assert.IsType<DateTime>(newValue);
             Assert.Equal(default(DateTime), newValue);
         }
+
+        // New tests
+
+        [Fact]
+        public void ToOrDefault_StringToDateTime_ShouldReturnDefaultDateTime()
+        {
+            var stringValue = "InvalidDateTime";
+            var result = stringValue.ToOrDefault<DateTime>();
+
+            Assert.IsType<DateTime>(result);
+            Assert.Equal(default(DateTime), result);
+        }
+
+        [Fact]
+        public void ToOrDefault_NullableIntToNullString_ShouldReturnNullString()
+        {
+            int? nullableIntValue = null;
+            var result = nullableIntValue.ToOrDefault<string>();
+
+            Assert.Null(result);
+        }
+
+        [Fact]
+        public void ToOrDefault_NullableIntToNonNullString_ShouldReturnNonNullString()
+        {
+            int? nullableIntValue = 42;
+            var result = nullableIntValue.ToOrDefault<string>();
+
+            Assert.NotNull(result);
+            Assert.Equal("42", result);
+        }
+
+        [Fact]
+        public void ToOrDefault_NullableIntWithOutParamToNonNullString_ShouldReturnNonNullString()
+        {
+            int? nullableIntValue = 42;
+            string result;
+            var conversionResult = nullableIntValue.ToOrDefault(out result);
+
+            Assert.True(conversionResult);
+            Assert.NotNull(result);
+            Assert.Equal("42", result);
+        }
+
+        [Fact]
+        public void ToOrDefault_NullableIntWithOutParamToNullString_ShouldReturnNullString()
+        {
+            int? nullableIntValue = null;
+            string result;
+            var conversionResult = nullableIntValue.ToOrDefault(out result);
+
+            Assert.True(conversionResult);
+            Assert.Null(result);
+        }
     }
 }
