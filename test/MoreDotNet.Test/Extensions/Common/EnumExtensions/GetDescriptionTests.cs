@@ -78,5 +78,67 @@
                 this.name = key;
             }
         }
+
+        //NEW TESTS
+
+        private enum TestEnumWithEmptyDescription
+        {
+            [Description("")]
+            One = 1,
+
+            [Description("")]
+            Two = 2,
+        }
+
+        [Fact]
+        public void GetDescription_GivenTestEnumWithEmptyDescription_ShouldReturnEmptyDescription()
+        {
+            string expected = string.Empty;
+            TestEnumWithEmptyDescription testEnum = TestEnumWithEmptyDescription.One;
+
+            string enumDescription = testEnum.GetDescription();
+
+            Assert.Equal(expected, enumDescription);
+        }
+
+        private enum TestEnumWithNullDescription
+        {
+            [Description(null)]
+            One = 1,
+
+            [Description(null)]
+            Two = 2,
+        }
+
+        [Fact]
+        public void GetDescription_GivenTestEnumWithNullDescription_ShouldReturnNull()
+        {
+            string expected = null;
+            TestEnumWithNullDescription testEnum = TestEnumWithNullDescription.One;
+
+            string enumDescription = testEnum.GetDescription();
+
+            Assert.Equal(expected, enumDescription);
+        }
+
+        private enum TestEnumWithDuplicateDescription
+        {
+            [Description("Duplicate")]
+            One = 1,
+
+            [Description("Duplicate")]
+            Two = 2,
+        }
+
+        [Fact]
+        public void GetDescription_GivenTestEnumWithDuplicateDescription_ShouldReturnEnumDescriptionString()
+        {
+            string expected = "Duplicate";
+            TestEnumWithDuplicateDescription testEnum = TestEnumWithDuplicateDescription.One;
+
+            string enumDescription = testEnum.GetDescription();
+
+            Assert.Equal(expected, enumDescription);
+        }
     }
 }
