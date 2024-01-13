@@ -92,7 +92,7 @@
         public void GetDisplayName_GivenTestEnumWithDuplicateDisplayName_ShouldReturnEnumDisplayNameString()
         {
             string expected = "One";
-            TestEnumWithDuplicateDisplayName testEnum = TestEnumWithDuplicateDisplayName.One;
+            TestEnumWithDuplicateDisplayNames testEnum = TestEnumWithDuplicateDisplayNames.One;
 
             string enumDisplayName = testEnum.GetDisplayName();
 
