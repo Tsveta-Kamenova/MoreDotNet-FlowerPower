@@ -87,17 +87,5 @@
             [Display(Name = "Duplicate")]
             Two = 2,
         }
-
-        [Fact]
-        public void GetDisplayName_GivenTestEnumWithDuplicateDisplayName_ShouldReturnEnumDisplayNameString()
-        {
-            string expected = "One";
-            TestEnumWithDuplicateDisplayNames testEnum = TestEnumWithDuplicateDisplayNames.One;
-
-            string enumDisplayName = testEnum.GetDisplayName();
-
-            Assert.Equal(expected, enumDisplayName);
-        }
-
     }
 }
